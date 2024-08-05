@@ -1,0 +1,228 @@
+/* Color Variables */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #2980b9;
+  --success-color: #27ae60;
+  --success-hover-color: #2ecc71;
+  --title-color: #34495e;
+  --bg-color: #ecf0f1;
+  --font-family: 'Poppins', Arial, sans-serif;
+
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  font-family: var(--font-family);
+}
+
+.content {
+  max-width: 800px;
+  margin: 58px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+h1 {
+  color: var(--primary-color);
+  font-size: 2.5em;
+  animation: slideInDown 1s ease-in-out;
+}
+
+h3 {
+  color: var(--title-color);
+  font-size: 1.5em;
+  animation: slideInUp 1s ease-in-out;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+th {
+  background-color: #f0f0f0;
+}
+
+a.btn {
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 5px;
+  border-radius: 20px;
+  background-color: var(--primary-color);
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+a.btn::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 300%;
+  height: 300%;
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+a.btn:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+a.btn:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+a.btn-delete {
+  background-color: #e74c3c;
+}
+
+a.btn-delete:hover {
+  background-color: #c0392b;
+}
+
+a.btn-edit {
+  background-color: var(--success-color);
+}
+
+a.btn-edit:hover {
+  background-color: var(--success-hover-color);
+}
+
+/* Input Field */
+input[type="text"] {
+  width: calc(100% - 22px);
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+/* Add Task and Update Task Buttons */
+#btn_add, #btn_update {
+  background-color: var(--success-color);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+#btn_add::before, #btn_update::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 300%;
+  height: 300%;
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+#btn_add:hover, #btn_update:hover {
+  background-color: var(--success-hover-color);
+  transform: scale(1.05);
+}
+
+#btn_add:hover::before, #btn_update:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Keyframes for Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .content {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  h3 {
+    font-size: 1.2em;
+  }
+
+  table {
+    font-size: 0.9em;
+  }
+
+  input[type="text"] {
+    width: calc(100% - 20px);
+  }
+}
