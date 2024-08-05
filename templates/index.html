@@ -1,0 +1,53 @@
+<!-- Inheriting Base Template -->
+{% extends "base.html" %}
+
+<!-- Head Part -->
+{% block head %}
+<title>Task Smash using Flask</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM3Hq5Rs5yLeuH5K5E59F8z5h5QsCvABW+K//dm" crossorigin="anonymous">
+{% endblock %}
+
+<!-- Body Part -->
+{% block body %}
+<div class="content">
+    <h1>Task Smash 2.0</h1>
+
+    <!-- If there are no tasks -->
+    {% if tasks|length < 1 %} 
+        <h3>There are No Tasks... Please Create One Here!</h3>
+
+    <!-- If there are tasks -->
+    {% else %}
+    <table>
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Added</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Looping through tasks and displaying them for the user -->
+            {% for task in tasks %}
+            <tr>
+                <!-- This will display the content of the task -->
+                <td>{{ task.content }}</td>
+                <!-- This will display the date the task was created -->
+                <td>{{ task.date_created.strftime("%b %d, %Y") }}</td>
+                <!-- This will allow the user to delete the task -->
+                <td>
+                    <a href="/delete/{{ task.id }}" class="btn btn-delete"><i class="fas fa-trash-alt"></i> Delete</a>
+                    <a href="/update/{{ task.id }}" class="btn btn-edit"><i class="fas fa-edit"></i> Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+    <form action="/" method="POST">
+        <input type="text" name="content" id="content" placeholder="Enter your task here...">
+        <input type="submit" value="Add Task" id="btn_add">
+    </form>
+</div>
+{% endblock %}
